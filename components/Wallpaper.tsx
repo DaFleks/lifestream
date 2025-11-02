@@ -10,7 +10,7 @@ const Wallpaper = (props: ImageProps) => {
       src={props.src}
       alt={props.alt ?? ""}
       fill
-      className="object-cover fixed w-full h-full top-0 left-0"
+      className="object-cover w-full h-full top-0 left-0 -z-10"
       priority
       sizes="100vw"
     />
