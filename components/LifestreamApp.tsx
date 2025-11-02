@@ -1,17 +1,17 @@
-"use client";
-
 import Container from "./aetherium/Container";
 
 import Wallpaper from "./Wallpaper";
 import InfoBar from "./InfoBar";
 
-import wallpaperImage from "@/public/wallpapers/images/wallpaper-1.jpg";
 import { InfoBarProvider } from "@/providers/InfoBarContext";
+import { getWallpapers } from "@/lib/serverHelpers";
 
-const LifestreamApp = () => {
+const LifestreamApp = async () => {
+  const wallpapers = await getWallpapers();
+
   return (
     <Container className="relative size-full p-8">
-      <Wallpaper src={wallpaperImage} alt="" />
+      <Wallpaper src={wallpapers} overlayOpacity={25} slideshowLength={30}/>
       <InfoBarProvider>
         <InfoBar className="left-8 bottom-6" />
       </InfoBarProvider>

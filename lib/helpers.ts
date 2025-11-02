@@ -1,4 +1,6 @@
 import { fetchWeatherApi } from "openmeteo";
+import fs from "fs";
+import path from "path";
 
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];

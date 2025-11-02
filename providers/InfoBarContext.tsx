@@ -13,8 +13,8 @@ const InfoBarContext = createContext<InfoBarState | undefined>(undefined);
 
 export const InfoBarProvider = ({ children }: { children: React.ReactNode }) => {
   const [date, setDate] = useState<string>("");
-  const [time, setTime] = useState<string>("");
-  const [temperature, setTemperature] = useState<string>("");
+  const [time, setTime] = useState<string>("00:00");
+  const [temperature, setTemperature] = useState<string>("0");
 
   useEffect(() => {
     //  Initial pre-interval fetch / state set.
