@@ -1,6 +1,4 @@
 import { fetchWeatherApi } from "openmeteo";
-import fs from "fs";
-import path from "path";
 
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
@@ -64,4 +62,24 @@ export async function getCurrentTemperature() {
   };
 
   return weatherData.current.temperature_2m.toFixed(0).toString();
+}
+
+
+
+export function darkenHex(hex: string, amount = 20): string {
+  // Remove leading #
+  hex = hex.replace("#", "");
+
+  // Convert hex to RGB
+  const num = parseInt(hex, 16);
+  let r = (num >> 16) - amount;
+  let g = ((num >> 8) & 0x00ff) - amount;
+  let b = (num & 0x0000ff) - amount;
+
+  // Clamp between 0–255
+  r = Math.max(0, r);
+  g = Math.max(0, g);
+  b = Math.max(0, b);
+
+  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
 }
