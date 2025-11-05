@@ -7,6 +7,9 @@ import Container from "./aetherium/Container";
 import { Button } from "./ui/button";
 
 import { useWidget } from "@/providers/WidgetContext";
+import Text from "./aetherium/Text";
+import Image from "next/image";
+import { StaticImageData } from "next/dist/shared/lib/get-img-props";
 
 type AllowedWidths =
   | "w-0"
@@ -32,6 +35,8 @@ interface WidgetProps {
   children?: React.ReactNode;
   size: AllowedWidths;
   className?: string;
+  src: string | StaticImageData;
+  title?: string;
 }
 
 const Widget = (props: WidgetProps) => {
@@ -40,11 +45,21 @@ const Widget = (props: WidgetProps) => {
   const handleClose = () => setCurrentWidget("");
 
   return (
-    <Container className={cn('h-full absolute top-0 right-0 p-8 z-50', props.size)}>
-      <Container className={cn("h-full w-full bg-neutral-100/66 rounded shadow-md shadow-black/25 p-4 relative", props.className)}>
-        <Button onClick={handleClose} className="absolute -top-2.5 -right-2.5 w-5 h-5 p-0 bg-neutral-600" size="icon">
-          <XIcon className="w-3 h-3" />
-        </Button>
+    <Container className={cn("h-full absolute top-0 right-0 p-8 z-50 ", props.size)}>
+      <Container className={cn("h-full w-full bg-neutral-400/50 rounded shadow-md shadow-black/25 p-2 relative", props.className)}>
+        <Container className="flex justify-between items-center mb-2">
+          <Container className="flex items-center gap-2">
+            <Container className="relative w-4 aspect-square">
+              <Image src={props.src} alt="Window Icon" fill sizes="" className="object-contain" />
+            </Container>
+            <Text className="text-sm mt-[0.25] text-shadow-sm text-shadow-neutral-700/25">{props.title}</Text>
+          </Container>
+
+          <Button onClick={handleClose} variant="ghost" className="w-4 h-4 p-3" size="icon">
+            <XIcon className="w-4! h-4!" />
+          </Button>
+        </Container>
+
         {props.children}
       </Container>
     </Container>

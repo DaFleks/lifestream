@@ -18,7 +18,11 @@ interface WidgetButtonProps {
 
 const WidgetButton = (props: WidgetButtonProps) => {
   return (
-    <button id={props.id} name={props.name} onClick={props.onClick} className="flex flex-col items-center gap-3">
+    <button
+      id={props.id}
+      name={props.name}
+      onClick={props.onClick}
+      className="flex flex-col items-center gap-3 cursor-pointer hover:bg-neutral-100/25 p-2 rounded duration-200">
       <Container className="relative size-12 space-y-2  border-red-500">
         <Image src={props.src} alt={props.alt} fill sizes="" className="object-contain drop-shadow-md drop-shadow-neutral-600" />
       </Container>

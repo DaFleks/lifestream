@@ -12,6 +12,8 @@ import ConferenceTable from "./ConferenceTable";
 import { ConferenceTeam } from "@/types/api/basketball";
 import { getGameDate } from "@/lib/api/basketball";
 
+import basketballIcon from "@/public/icons/basketball.png";
+
 const CLASS_TABCONTENT = "h-full rounded overflow-y-auto bg-neutral-100 p-4";
 
 const Basketball = () => {
@@ -26,7 +28,7 @@ const Basketball = () => {
   }, []);
 
   return (
-    <Widget className="flex flex-col" size="w-[70%]">
+    <Widget title="Basketball" src={basketballIcon} className="flex flex-col" size="w-[70%]">
       <Container className="grow h-0">
         <Tabs defaultValue="today" className="h-full text-black">
           <TabsList className="rounded w-full">
